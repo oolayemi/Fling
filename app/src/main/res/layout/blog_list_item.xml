@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:background="@color/card_bg_color"
+            android:id="@+id/main_blog_post"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="3dp"
+            android:padding="5dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/post_detail_user_img"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/profile_placeholder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/blog_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="4dp"
+                android:text="Username"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/post_detail_user_img"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/blog_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Just now"
+                app:layout_constraintStart_toEndOf="@+id/post_detail_user_img"
+                app:layout_constraintTop_toBottomOf="@+id/blog_user_name" />
+
+            <ImageView
+                android:src="@drawable/ic_arrow_down"
+                android:id="@+id/arrow_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
+                app:layout_constraintBottom_toTopOf="@+id/blog_image_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginStart="50dp"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/blog_image_card"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_detail_user_img">
+
+                <ImageView
+                    android:id="@+id/post_detail_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:maxLines="5"
+                android:textSize="15dp"
+                android:layout_marginStart="50dp"
+                android:id="@+id/post_detail_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="Lorem ipsum dolor sit amet, soluta regione urbanitas vis in, qui elit populo ut. "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blog_image_card" />
+
+            <ImageView
+                android:id="@+id/blog_like_btn"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_detail_desc"
+                app:srcCompat="@mipmap/action_like_gray" />
+
+            <TextView
+                android:id="@+id/blog_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="0 Likes"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/blog_like_btn"
+                app:layout_constraintTop_toBottomOf="@+id/post_detail_desc" />
+
+            <ImageView
+                android:id="@+id/blog_comment_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/blog_comment_count"
+                app:layout_constraintTop_toBottomOf="@+id/post_detail_desc"
+                app:srcCompat="@mipmap/action_comment_icon" />
+
+
+            <TextView
+                android:id="@+id/blog_comment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="8dp"
+                android:text="0 Comments"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/post_detail_desc" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#474646"
+        app:layout_constraintTop_toBottomOf="@+id/main_blog_post" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

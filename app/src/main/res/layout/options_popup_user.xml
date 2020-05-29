@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:background="#FFFFFF"
+    android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="#000"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="6dp"
+                android:id="@+id/popupheader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Options"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:textStyle="bold"/>
+
+            <View
+                android:background="#EE4848"
+                android:layout_width="match_parent"
+                android:layout_height="2dp" />
+
+            <TextView
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:id="@+id/popup_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bottom_save"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <View
+                android:background="#BDBDBD"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:id="@+id/popup_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <View
+                android:id="@+id/popupview_delete"
+                android:background="#ADACAC"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:id="@+id/popup_addfav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Post"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <View
+                android:background="#ADACAC"
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:id="@+id/popupcancel"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "180395767902",
+    "firebase_url": "https://fling-9bfe9.firebaseio.com",
+    "project_id": "fling-9bfe9",
+    "storage_bucket": "fling-9bfe9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180395767902:android:e5e3e349d0c37482eedccf",
+        "android_client_info": {
+          "package_name": "com.stylet.fling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180395767902-7307jutteqejtprdg0pmd594kc7bp0v4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stylet.fling",
+            "certificate_hash": "b8f3d4e5aa66b46fd2b62adfbf8fb671199160a4"
+          }
+        },
+        {
+          "client_id": "180395767902-rsegg29f9t0abgugo36teu5v7q9iticj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkxCjmr73fKaEZ16gyFA9xfIcgrQRVP80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180395767902-rsegg29f9t0abgugo36teu5v7q9iticj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
