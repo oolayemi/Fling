@@ -1,6 +1,9 @@
 package com.stylet.fling.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
+    private boolean isDark = false;
 
 
     @Override
@@ -41,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
 
         /*Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
+
+        enablePersistence();
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+
+        isDark = getThemeStatePref();
+
+        if (isDark){
+            navigationView.setBackgroundColor(getResources().getColor(R.color.card_bg_color_dark));
+            navigationView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+        }
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -59,13 +76,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        enablePersistence();
+
 
         updateNavHeader();
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         /*mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -149,6 +165,12 @@ public class MainActivity extends AppCompatActivity {
                 .load(currentUser.getPhotoUrl())
                 .apply(RequestOptions.circleCropTransform())
                 .into(navUserImage);
+    }
+
+    private boolean getThemeStatePref(){
+        SharedPreferences pref = getApplication().getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        boolean isDark = pref.getBoolean("isDark", false);
+        return isDark;
     }
 
     private void enablePersistence() {

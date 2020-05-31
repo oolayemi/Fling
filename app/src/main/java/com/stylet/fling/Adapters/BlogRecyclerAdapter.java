@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -52,7 +53,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
     private List<BlogPost> blog_list;
     public Context context;
-    public boolean isDark = false;
+    private boolean isDark = false;
 
 
 
@@ -453,7 +454,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             blogUserName  = mView.findViewById(R.id.blog_user_name);
             blogUserImage = mView.findViewById(R.id.post_detail_user_img);
 
-
+            boolean isDark = getThemeStatePref();
             if (isDark){
                 setDarkTheme();
             }
@@ -532,6 +533,12 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
                     }
                 });
+    }
+
+    private boolean getThemeStatePref(){
+        SharedPreferences pref = context.getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        boolean isDark = pref.getBoolean("isDark", false);
+        return isDark;
     }
 
     private void nrLikes(final TextView likes, String postid){

@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +33,7 @@ public class FlingsFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> mUsers;
+    FirebaseUser firebaseUser;
 
     private EditText search_bar;
 
@@ -43,6 +46,8 @@ public class FlingsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         search_bar = root.findViewById(R.id.search_bar);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         mUsers = new ArrayList<>();
         userAdapter = new UserAdapter(getContext(), mUsers, true);
@@ -105,7 +110,9 @@ public class FlingsFragment extends Fragment {
                     mUsers.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                         User user = snapshot.getValue(User.class);
-                        mUsers.add(user);
+                        if (!user.getUserId().equals(firebaseUser.getUid())){
+                            mUsers.add(user);
+                        }
                     }
                     userAdapter.notifyDataSetChanged();
                 }

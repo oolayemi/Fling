@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#666868"
+    android:background="#5A5F5F"
     tools:context=".Activities.ShowImageActivity">
 
     <ImageView
@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:tint="#000"
+        android:tint="#2E2E2E"
         android:id="@+id/backpress"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"

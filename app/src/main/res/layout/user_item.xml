@@ -38,10 +38,11 @@
     </LinearLayout>
 
     <Button
+        android:background="@color/colorPrimary"
         android:id="@+id/btn_follow"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:textColor="@color/colorPrimary"
+        android:layout_width="110dp"
+        android:layout_height="35dp"
+        android:textColor="@android:color/white"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"/>
 

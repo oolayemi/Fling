@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="+40K"
+                android:text=""
                 android:textColor="#2196f3"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="320"
+                android:text=""
                 android:textColor="#2196f3"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -180,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text=" 148 "
+                android:text=""
                 android:textColor="#2196f3"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -199,8 +199,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_vertical_dots"
             app:layout_constraintBottom_toBottomOf="parent"

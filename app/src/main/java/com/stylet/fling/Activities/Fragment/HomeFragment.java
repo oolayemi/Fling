@@ -1,6 +1,8 @@
 package com.stylet.fling.Activities.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,7 @@ import com.stylet.fling.Activities.NewPostActivity;
 import com.stylet.fling.Adapters.BlogRecyclerAdapter;
 import com.stylet.fling.Adapters.StatusRecyclerAdapter;
 import com.stylet.fling.Model.BlogPost;
+import com.stylet.fling.Model.Comments;
 import com.stylet.fling.Model.StatusPost;
 import com.stylet.fling.R;
 
@@ -74,7 +77,8 @@ public class HomeFragment extends Fragment {
                              final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        enablePersistence();
+        /*enablePersistence();*/
+
         CircleImageView userImage = view.findViewById(R.id.toolbar_userimage);
 
         fabSwitcher = view.findViewById(R.id.fab_switcher);
@@ -108,12 +112,7 @@ public class HomeFragment extends Fragment {
         progressBar = view.findViewById(R.id.pro);
 
 
-        blogRecyclerAdapter = new BlogRecyclerAdapter(blog_list);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(container.getContext());
-        linearLayoutManager.setReverseLayout(true);
-        blog_list_view.setLayoutManager(linearLayoutManager);
-        /*blog_list_view.setAdapter(blogRecyclerAdapter);*/
-        blog_list_view.setHasFixedSize(true);
+
 
         /*blogRecyclerAdapter = new BlogRecyclerAdapter(blog_list);
         blog_list_view.setLayoutManager(new LinearLayoutManager(container.getContext()));
@@ -125,10 +124,23 @@ public class HomeFragment extends Fragment {
         status_list_view.setAdapter(statusRecyclerAdapter);
         status_list_view.setHasFixedSize(true);
 
+        isDark = getThemeStatePref();
+        if (isDark){
+
+            home_layout.setBackgroundColor(getResources().getColor(R.color.black));
+
+        }else {
+            home_layout.setBackgroundColor(getResources().getColor(R.color.white));
+        }
         Glide.with(container.getContext()).load(user.getPhotoUrl()).into(userImage);
 
 
-
+        blogRecyclerAdapter = new BlogRecyclerAdapter(getContext(), blog_list, isDark);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(container.getContext());
+        linearLayoutManager.setReverseLayout(true);
+        blog_list_view.setLayoutManager(linearLayoutManager);
+        /*blog_list_view.setAdapter(blogRecyclerAdapter);*/
+        blog_list_view.setHasFixedSize(true);
 
         checkFollowing();
 
@@ -146,6 +158,7 @@ public class HomeFragment extends Fragment {
 
                 blogRecyclerAdapter = new BlogRecyclerAdapter(container.getContext(), blog_list, isDark);
                 blog_list_view.setAdapter(blogRecyclerAdapter);
+                saveThemeStatePref(isDark);
             }
         });
 
@@ -183,6 +196,20 @@ public class HomeFragment extends Fragment {
 
         return view;
 
+    }
+
+    private void saveThemeStatePref(boolean isDark) {
+
+        SharedPreferences myRef = getContext().getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = myRef.edit();
+        editor.putBoolean("isDark", isDark);
+        editor.commit();
+    }
+
+    private boolean getThemeStatePref(){
+        SharedPreferences pref = getContext().getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        boolean isDark = pref.getBoolean("isDark", false);
+        return isDark;
     }
 
     private void checkFollowing(){

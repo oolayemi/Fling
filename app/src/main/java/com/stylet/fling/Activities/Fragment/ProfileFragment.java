@@ -42,8 +42,6 @@ public class ProfileFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        enablePersistence();
-
         usersImage = root.findViewById(R.id.usersImage);
         usersEmail = root.findViewById(R.id.usersEmail);
         usersName = root.findViewById(R.id.usersName);
@@ -75,7 +73,7 @@ public class ProfileFragment extends Fragment {
     private void getFollowers(){
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child("Follow").child(profile_id).child("Followers");
+                .child("Follow").child(user.getUid()).child("Followers");
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -90,7 +88,7 @@ public class ProfileFragment extends Fragment {
         });
 
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference()
-                .child("Follow").child(profile_id).child("Following");
+                .child("Follow").child(user.getUid()).child("Following");
 
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,7 +113,7 @@ public class ProfileFragment extends Fragment {
                 int i = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     BlogPost blogPost = snapshot.getValue(BlogPost.class);
-                    if (blogPost.getUser_id().equals(profile_id)){
+                    if (blogPost.getUser_id().equals(user.getUid())){
                         i++;
                     }
                 }
@@ -129,8 +127,5 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    private void enablePersistence() {
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-    }
 
 }
